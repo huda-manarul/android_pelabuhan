@@ -194,12 +194,12 @@ public class Login extends AppCompatActivity {
             }
         }) {
 
-            @Override
+            @Override//kene woi
             protected Map<String, String> getParams() {
                 // Posting parameters to login url
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("username", username);
-                params.put("password", password);
+                params.put("user", username);
+                params.put("pass", password);
 
                 return params;
             }
