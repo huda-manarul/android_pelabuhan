@@ -5,5 +5,5 @@ package mana.huda.clientapp;
  */
 
 public class Server {
-    public static final String URL = "https://rootdata.000webhostapp.com/client/";
+    public static final String URL = "http://192.168.0.107/kp/client/";
 }
