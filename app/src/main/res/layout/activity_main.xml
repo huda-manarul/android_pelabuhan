@@ -48,6 +48,62 @@
             android:layout_margin="10dp"
             android:text="Username"/>
 
+        <TextView
+            android:id="@+id/txt_nama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="ID"/>
+
+        <TextView
+            android:id="@+id/txt_kategori"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="Username"/>
+
+        <TextView
+            android:id="@+id/txt_bahan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="ID"/>
+
+        <TextView
+            android:id="@+id/txt_pemilik"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="Username"/>
+
+        <TextView
+            android:id="@+id/txt_kotor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="ID"/>
+
+        <TextView
+            android:id="@+id/txt_bersih"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="Username"/>
+
+        <TextView
+            android:id="@+id/txt_qrcode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="Username"/>
+
         <Button
             android:id="@+id/btn_logout"
             android:layout_width="wrap_content"

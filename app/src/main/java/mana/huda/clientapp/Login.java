@@ -49,11 +49,23 @@ public class Login extends AppCompatActivity {
     public final static String TAG_USERNAME = "username";
     public final static String TAG_ID = "id";
 
+    public final static String TAG_NAMA = "nama";
+    public final static String TAG_KATEGORI = "kategori";
+    public final static String TAG_BAHAN = "bahan";
+    public final static String TAG_PEMILIK = "pemilik";
+    public final static String TAG_KOTOR = "kotor";
+    public final static String TAG_BERSIH = "bersih";
+    public final static String TAG_QRCODE = "qrcode";
+
+
     String tag_json_obj = "json_obj_req";
 
     SharedPreferences sharedpreferences;
     Boolean session = false;
     String id, username;
+
+    String nama,kategori,bahan,pemilik,kotor,bersih,qrcode;
+
     public static final String my_shared_preferences = "my_shared_preferences";
     public static final String session_status = "session_status";
 
@@ -81,13 +93,28 @@ public class Login extends AppCompatActivity {
         // Cek session login jika TRUE maka langsung buka MainActivity
         sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
         session = sharedpreferences.getBoolean(session_status, false);
+
         id = sharedpreferences.getString(TAG_ID, null);
         username = sharedpreferences.getString(TAG_USERNAME, null);
+        nama = sharedpreferences.getString(TAG_NAMA, null);
+        kategori = sharedpreferences.getString(TAG_KATEGORI, null);
+        bahan = sharedpreferences.getString(TAG_BAHAN, null);
+        pemilik = sharedpreferences.getString(TAG_PEMILIK, null);
+        kotor = sharedpreferences.getString(TAG_KOTOR, null);
+        bersih = sharedpreferences.getString(TAG_BERSIH, null);
+        qrcode = sharedpreferences.getString(TAG_QRCODE, null);
 
         if (session) {
             Intent intent = new Intent(Login.this, MainActivity.class);
             intent.putExtra(TAG_ID, id);
             intent.putExtra(TAG_USERNAME, username);
+            intent.putExtra(TAG_NAMA, nama);
+            intent.putExtra(TAG_KATEGORI, kategori);
+            intent.putExtra(TAG_BAHAN, bahan);
+            intent.putExtra(TAG_PEMILIK, pemilik);
+            intent.putExtra(TAG_KOTOR, kotor);
+            intent.putExtra(TAG_BERSIH, bersih);
+            intent.putExtra(TAG_QRCODE, qrcode);
             finish();
             startActivity(intent);
         }
@@ -151,6 +178,13 @@ public class Login extends AppCompatActivity {
                     if (success == 1) {
                         String username = jObj.getString(TAG_USERNAME);
                         String id = jObj.getString(TAG_ID);
+                        String nama = jObj.getString(TAG_NAMA);
+                        String kategori = jObj.getString(TAG_KATEGORI);
+                        String bahan = jObj.getString(TAG_BAHAN);
+                        String pemilik = jObj.getString(TAG_PEMILIK);
+                        String kotor = jObj.getString(TAG_KOTOR);
+                        String bersih = jObj.getString(TAG_BERSIH);
+                        String qrcode = jObj.getString(TAG_QRCODE);
 
                         Log.e("Successfully Login!", jObj.toString());
 
@@ -162,12 +196,27 @@ public class Login extends AppCompatActivity {
                         //kene
                         editor.putString(TAG_ID, id);
                         editor.putString(TAG_USERNAME, username);
+                        editor.putString(TAG_NAMA, nama);
+                        editor.putString(TAG_KATEGORI, kategori);
+                        editor.putString(TAG_BAHAN, bahan);
+                        editor.putString(TAG_PEMILIK, pemilik);
+                        editor.putString(TAG_KOTOR, kotor);
+                        editor.putString(TAG_BERSIH, bersih);
+                        editor.putString(TAG_QRCODE, qrcode);
                         editor.commit();
 
                         // Memanggil main activity
                         Intent intent = new Intent(Login.this, MainActivity.class);
                         intent.putExtra(TAG_ID, id);
                         intent.putExtra(TAG_USERNAME, username);
+                        intent.putExtra(TAG_NAMA, nama);
+                        intent.putExtra(TAG_KATEGORI, kategori);
+                        intent.putExtra(TAG_BAHAN, bahan);
+                        intent.putExtra(TAG_PEMILIK, pemilik);
+                        intent.putExtra(TAG_KOTOR, kotor);
+                        intent.putExtra(TAG_BERSIH, bersih);
+                        intent.putExtra(TAG_QRCODE, qrcode);
+
                         finish();
                         startActivity(intent);
                     } else {
