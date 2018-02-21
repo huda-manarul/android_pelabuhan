@@ -5,10 +5,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -39,9 +43,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
-        ImageLoader.getInstance().init(config);
-
         /*txt_id = (TextView) findViewById(R.id.txt_id);
         txt_username = (TextView) findViewById(R.id.txt_username);*/
         txt_nama = (TextView) findViewById(R.id.txt_nama);
@@ -52,8 +53,6 @@ public class MainActivity extends AppCompatActivity {
         txt_kotor = (TextView) findViewById(R.id.txt_kotor);
         //txt_qrcode = (TextView) findViewById(R.id.txt_qrcode);
         img_qrcode = (ImageView) findViewById(R.id.img_qrcode);
-
-        btn_logout = (Button) findViewById(R.id.btn_logout);
 
         sharedpreferences = getSharedPreferences(Login.my_shared_preferences, Context.MODE_PRIVATE);
 
@@ -78,31 +77,51 @@ public class MainActivity extends AppCompatActivity {
         //txt_qrcode.setText("QRCODE KAPAL : " + qrcode);
         Glide.with(this).load(qrcode).into(img_qrcode);
 
-        btn_logout.setOnClickListener(new View.OnClickListener() {
+    }
 
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                // update login session ke FALSE dan mengosongkan nilai id dan username
-                SharedPreferences.Editor editor = sharedpreferences.edit();
-                editor.putBoolean(Login.session_status, false);
-                /*editor.putString(TAG_ID, null);
-                editor.putString(TAG_USERNAME, null);*/
-                editor.putString(TAG_NAMA, null);
-                editor.putString(TAG_KATEGORI, null);
-                editor.putString(TAG_BAHAN, null);
-                editor.putString(TAG_PEMILIK, null);
-                editor.putString(TAG_BERSIH, null);
-                editor.putString(TAG_KOTOR, null);
-                editor.putString(TAG_QRCODE, null);
-                editor.commit();
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        // TODO: Implement this method
+        MenuInflater menuInflater=new MenuInflater(this);
+        menuInflater.inflate(R.menu.menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
-                Intent intent = new Intent(MainActivity.this, Login.class);
-                finish();
-                startActivity(intent);
-            }
-        });
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        // TODO: Implement this method
+        switch(item.getItemId()){
 
+            case R.id.change_pass:
+                Toast.makeText(MainActivity.this,
+                        "Ubah Password",Toast.LENGTH_LONG).show();
+                break;
+            case R.id.log_out:
+                logout();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void logout(){
+        // update login session ke FALSE dan mengosongkan nilai id dan username
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putBoolean(Login.session_status, false);
+        /*editor.putString(TAG_ID, null);
+        editor.putString(TAG_USERNAME, null);*/
+        editor.putString(TAG_NAMA, null);
+        editor.putString(TAG_KATEGORI, null);
+        editor.putString(TAG_BAHAN, null);
+        editor.putString(TAG_PEMILIK, null);
+        editor.putString(TAG_BERSIH, null);
+        editor.putString(TAG_KOTOR, null);
+        editor.putString(TAG_QRCODE, null);
+        editor.commit();
+
+        Intent intent = new Intent(MainActivity.this, Login.class);
+        finish();
+        startActivity(intent);
     }
 
 }
