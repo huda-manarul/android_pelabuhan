@@ -7,19 +7,25 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 public class MainActivity extends AppCompatActivity {
 
     Button btn_logout;
-    TextView txt_id, txt_username;
-    TextView txt_nama,txt_kategori,txt_bahan,txt_pemilik,txt_kotor,txt_bersih,txt_qrcode;
+    TextView txt_id, txt_username,txt_qrcode;
+    ImageView img_qrcode;
+    TextView txt_nama,txt_kategori,txt_bahan,txt_pemilik,txt_kotor,txt_bersih;
     String id, username;
     String nama,kategori,bahan,pemilik,kotor,bersih,qrcode;
     SharedPreferences sharedpreferences;
 
-    public static final String TAG_ID = "id";
-    public static final String TAG_USERNAME = "username";
+    /*public static final String TAG_ID = "id";
+    public static final String TAG_USERNAME = "username";*/
     public static final String TAG_NAMA = "nama";
     public final static String TAG_KATEGORI = "kategori";
     public final static String TAG_BAHAN = "bahan";
@@ -33,22 +39,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        txt_id = (TextView) findViewById(R.id.txt_id);
-        txt_username = (TextView) findViewById(R.id.txt_username);
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
+        ImageLoader.getInstance().init(config);
+
+        /*txt_id = (TextView) findViewById(R.id.txt_id);
+        txt_username = (TextView) findViewById(R.id.txt_username);*/
         txt_nama = (TextView) findViewById(R.id.txt_nama);
         txt_kategori = (TextView) findViewById(R.id.txt_kategori);
         txt_bahan = (TextView) findViewById(R.id.txt_bahan);
         txt_pemilik = (TextView) findViewById(R.id.txt_pemilik);
         txt_bersih = (TextView) findViewById(R.id.txt_bersih);
         txt_kotor = (TextView) findViewById(R.id.txt_kotor);
-        txt_qrcode = (TextView) findViewById(R.id.txt_qrcode);
+        //txt_qrcode = (TextView) findViewById(R.id.txt_qrcode);
+        img_qrcode = (ImageView) findViewById(R.id.img_qrcode);
 
         btn_logout = (Button) findViewById(R.id.btn_logout);
 
         sharedpreferences = getSharedPreferences(Login.my_shared_preferences, Context.MODE_PRIVATE);
 
-        id = getIntent().getStringExtra(TAG_ID);
-        username = getIntent().getStringExtra(TAG_USERNAME);
+        /*id = getIntent().getStringExtra(TAG_ID);
+        username = getIntent().getStringExtra(TAG_USERNAME);*/
         nama = getIntent().getStringExtra(TAG_NAMA);
         kategori = getIntent().getStringExtra(TAG_KATEGORI);
         bahan = getIntent().getStringExtra(TAG_BAHAN);
@@ -57,15 +67,16 @@ public class MainActivity extends AppCompatActivity {
         bersih = getIntent().getStringExtra(TAG_BERSIH);
         qrcode = getIntent().getStringExtra(TAG_QRCODE);
 
-        txt_id.setText("ID KAPAL : " + id);
-        txt_username.setText("USERNAME : " + username);
+        /*txt_id.setText("ID KAPAL : " + id);
+        txt_username.setText("USERNAME : " + username);*/
         txt_nama.setText("NAMA KAPAL : " + nama);
         txt_kategori.setText("KATEGORI : " + kategori);
-        txt_bahan.setText("BAHAN : " + bahan);
+        txt_bahan.setText("BAHAN UTAMA : " + bahan);
         txt_pemilik.setText("PEMILIK KAPAL : " + pemilik);
-        txt_kotor.setText("KOTOR KAPAL : " + kotor);
-        txt_bersih.setText("BERSIH : " + bersih);
-        txt_qrcode.setText("QRCODE KAPAL : " + qrcode);
+        txt_kotor.setText("TONASE KOTOR : " + kotor);
+        txt_bersih.setText("TONASE BERSIH : " + bersih);
+        //txt_qrcode.setText("QRCODE KAPAL : " + qrcode);
+        Glide.with(this).load(qrcode).into(img_qrcode);
 
         btn_logout.setOnClickListener(new View.OnClickListener() {
 
@@ -75,8 +86,8 @@ public class MainActivity extends AppCompatActivity {
                 // update login session ke FALSE dan mengosongkan nilai id dan username
                 SharedPreferences.Editor editor = sharedpreferences.edit();
                 editor.putBoolean(Login.session_status, false);
-                editor.putString(TAG_ID, null);
-                editor.putString(TAG_USERNAME, null);
+                /*editor.putString(TAG_ID, null);
+                editor.putString(TAG_USERNAME, null);*/
                 editor.putString(TAG_NAMA, null);
                 editor.putString(TAG_KATEGORI, null);
                 editor.putString(TAG_BAHAN, null);
@@ -93,4 +104,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
 }
+

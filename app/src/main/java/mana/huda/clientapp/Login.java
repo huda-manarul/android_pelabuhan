@@ -46,8 +46,8 @@ public class Login extends AppCompatActivity {
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
 
-    public final static String TAG_USERNAME = "username";
-    public final static String TAG_ID = "id";
+    /*public final static String TAG_USERNAME = "username";
+    public final static String TAG_ID = "id";*/
 
     public final static String TAG_NAMA = "nama";
     public final static String TAG_KATEGORI = "kategori";
@@ -94,8 +94,8 @@ public class Login extends AppCompatActivity {
         sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
         session = sharedpreferences.getBoolean(session_status, false);
 
-        id = sharedpreferences.getString(TAG_ID, null);
-        username = sharedpreferences.getString(TAG_USERNAME, null);
+        /*id = sharedpreferences.getString(TAG_ID, null);
+        username = sharedpreferences.getString(TAG_USERNAME, null);*/
         nama = sharedpreferences.getString(TAG_NAMA, null);
         kategori = sharedpreferences.getString(TAG_KATEGORI, null);
         bahan = sharedpreferences.getString(TAG_BAHAN, null);
@@ -106,8 +106,8 @@ public class Login extends AppCompatActivity {
 
         if (session) {
             Intent intent = new Intent(Login.this, MainActivity.class);
-            intent.putExtra(TAG_ID, id);
-            intent.putExtra(TAG_USERNAME, username);
+            /*intent.putExtra(TAG_ID, id);
+            intent.putExtra(TAG_USERNAME, username);*/
             intent.putExtra(TAG_NAMA, nama);
             intent.putExtra(TAG_KATEGORI, kategori);
             intent.putExtra(TAG_BAHAN, bahan);
@@ -176,8 +176,8 @@ public class Login extends AppCompatActivity {
 
                     // Check for error node in json
                     if (success == 1) {
-                        String username = jObj.getString(TAG_USERNAME);
-                        String id = jObj.getString(TAG_ID);
+                        /*String username = jObj.getString(TAG_USERNAME);
+                        String id = jObj.getString(TAG_ID);*/
                         String nama = jObj.getString(TAG_NAMA);
                         String kategori = jObj.getString(TAG_KATEGORI);
                         String bahan = jObj.getString(TAG_BAHAN);
@@ -194,8 +194,8 @@ public class Login extends AppCompatActivity {
                         SharedPreferences.Editor editor = sharedpreferences.edit();
                         editor.putBoolean(session_status, true);
                         //kene
-                        editor.putString(TAG_ID, id);
-                        editor.putString(TAG_USERNAME, username);
+                        /*editor.putString(TAG_ID, id);
+                        editor.putString(TAG_USERNAME, username);*/
                         editor.putString(TAG_NAMA, nama);
                         editor.putString(TAG_KATEGORI, kategori);
                         editor.putString(TAG_BAHAN, bahan);
@@ -207,8 +207,8 @@ public class Login extends AppCompatActivity {
 
                         // Memanggil main activity
                         Intent intent = new Intent(Login.this, MainActivity.class);
-                        intent.putExtra(TAG_ID, id);
-                        intent.putExtra(TAG_USERNAME, username);
+                        /*intent.putExtra(TAG_ID, id);
+                        intent.putExtra(TAG_USERNAME, username);*/
                         intent.putExtra(TAG_NAMA, nama);
                         intent.putExtra(TAG_KATEGORI, kategori);
                         intent.putExtra(TAG_BAHAN, bahan);
