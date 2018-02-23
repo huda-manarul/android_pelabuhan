@@ -100,7 +100,6 @@ public class Change extends AppCompatActivity {
     }
 
     private void checkLogin(final String username, final String password, final String newpassword){
-        //Toast.makeText(getApplicationContext(),"username = "+username+" pasword lama = "+password+" password baru "+newpassword,Toast.LENGTH_LONG).show();
         StringRequest strReq = new StringRequest(Request.Method.POST, url, new Response.Listener<String>(){
             public void onResponse(String response) {
 
@@ -109,6 +108,7 @@ public class Change extends AppCompatActivity {
                     success = jObj.getInt(TAG_SUCCESS);
                     if (success == 1){
                         Toast.makeText(getApplicationContext(), jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
+                        finish();
                         changepasstrue();
                     }
                     Toast.makeText(getApplicationContext(),
