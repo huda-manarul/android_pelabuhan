@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,6 +21,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
             android:textSize="18dip"
+            android:text="UBAH PASSWORD"
             android:textStyle="bold" />
 
         <View
@@ -27,16 +29,9 @@
             android:layout_width="fill_parent"
             android:layout_height="1dp"
             android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
             android:background="#448AFF" />
 
-        <TextView
-            android:id="@+id/TextView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dip"
-            android:text="REGISTER BELOW"
-            android:textSize="16dip" />
 
         <EditText
             android:id="@+id/txt_username"
@@ -44,8 +39,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:hint="Username"
-            android:inputType="textEmailAddress"
+            android:hint="Masukkan Username"
+            android:password="true"
             android:singleLine="true" />
 
         <EditText
@@ -54,17 +49,27 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:hint="Password"
+            android:hint="Masukkan Password Lama"
             android:password="true"
             android:singleLine="true" />
 
         <EditText
-            android:id="@+id/txt_confirm_password"
+            android:id="@+id/txt_newpassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:hint="Comfirmation Password"
+            android:hint="Masukkan Password Baru"
+            android:password="true"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/txt_confirm_newpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:hint="Konfirmasi Password Baru"
             android:password="true" />
 
         <Button
@@ -73,19 +78,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="15dp"
+            android:layout_marginTop="20dp"
             android:background="#448AFF"
+            android:paddingEnd="10dp"
+            android:paddingLeft="10dp"
+            android:text="UBAH PASSWORD"
+            android:onClick="chagepass"
             android:textColor="#fff"
-            android:text="Register"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/btn_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="15dp"
-            android:background="#00555555"
-            android:text="Login"
             android:textStyle="bold" />
 
     </LinearLayout>
